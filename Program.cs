@@ -1,21 +1,22 @@
-using Microsoft.AspNetCore.Hosting;
+using MeuSiteEmMVC.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MeuSiteEmMVC.Data;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddAuthentication("CookieAuth")
-    .AddCookie("CookieAuth", options =>
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
     {
-        options.LoginPath = "Conta/Login";
-        options.LogoutPath = "Conta/Logout";
+        options.LoginPath = "/Conta/Login";
+        options.LogoutPath = "/Conta/Logout";
     });
 
 builder.Services.AddControllersWithViews();
@@ -23,6 +24,8 @@ builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
