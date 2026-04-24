@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MeuSiteEmMVC.Data;
 using MeuSiteEmMVC.Models;
+using MeuSiteEmMVC.Services;
 using MeuSiteEmMVC.ViewModels;
 using System.Security.Claims;
 
@@ -11,30 +12,28 @@ namespace MeuSiteEmMVC.Controllers
     public class EnderecoController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly ViaCepService _viaCepService;
 
-        public EnderecoController(AppDbContext context)
+        public EnderecoController(AppDbContext context, ViaCepService viaCepService)
         {
             _context = context;
+            _viaCepService = viaCepService;
         }
 
-        // Lista os endereços do usuário logado
         public IActionResult Index()
         {
             var usuarioId = int.Parse(User.FindFirstValue("UsuarioId"));
             var enderecos = _context.Enderecos
                 .Where(e => e.UsuarioId == usuarioId)
                 .ToList();
-
             return View(enderecos);
         }
 
-        // GET: Criar novo endereço
         public IActionResult Criar()
         {
             return View();
         }
 
-        // POST: Salvar novo endereço
         [HttpPost]
         public IActionResult Criar(EnderecoViewModel model)
         {
@@ -42,7 +41,6 @@ namespace MeuSiteEmMVC.Controllers
                 return View(model);
 
             var usuarioId = int.Parse(User.FindFirstValue("UsuarioId"));
-
             var endereco = new Endereco
             {
                 Cep = model.Cep,
@@ -54,14 +52,11 @@ namespace MeuSiteEmMVC.Controllers
                 Numero = model.Numero,
                 UsuarioId = usuarioId
             };
-
             _context.Enderecos.Add(endereco);
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
-        // GET: Editar endereço
         public IActionResult Editar(int id)
         {
             var usuarioId = int.Parse(User.FindFirstValue("UsuarioId"));
@@ -82,11 +77,9 @@ namespace MeuSiteEmMVC.Controllers
                 Uf = endereco.Uf,
                 Numero = endereco.Numero
             };
-
             return View(model);
         }
 
-        // POST: Salvar edição
         [HttpPost]
         public IActionResult Editar(EnderecoViewModel model)
         {
@@ -107,13 +100,10 @@ namespace MeuSiteEmMVC.Controllers
             endereco.Cidade = model.Cidade;
             endereco.Uf = model.Uf;
             endereco.Numero = model.Numero;
-
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
-        // GET: Confirmar exclusão
         public IActionResult Deletar(int id)
         {
             var usuarioId = int.Parse(User.FindFirstValue("UsuarioId"));
@@ -126,7 +116,6 @@ namespace MeuSiteEmMVC.Controllers
             return View(endereco);
         }
 
-        // POST: Confirmar exclusão
         [HttpPost, ActionName("Deletar")]
         public IActionResult DeletarConfirmado(int id)
         {
@@ -139,8 +128,50 @@ namespace MeuSiteEmMVC.Controllers
 
             _context.Enderecos.Remove(endereco);
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
+
+        // GET: Buscar CEP via ViaCEP
+        [HttpGet]
+        public async Task<IActionResult> BuscarCep(string cep)
+        {
+            var resultado = await _viaCepService.BuscarCepAsync(cep);
+
+            if (resultado == null || resultado.Erro)
+                return Json(new { erro = true });
+
+            return Json(new
+            {
+                logradouro = resultado.Logradouro,
+                complemento = resultado.Complemento,
+                bairro = resultado.Bairro,
+                cidade = resultado.Localidade,
+                uf = resultado.Uf
+            });
+        }
+
+        // GET: Para Baixar em CSV
+        public IActionResult ExportarCsv()
+        {
+            var usuarioId = int.Parse(User.FindFirstValue("UsuarioId"));
+            var enderecos = _context.Enderecos
+                .Where(e => e.UsuarioId == usuarioId)
+                .ToList();
+
+            var csv = new System.Text.StringBuilder();
+            csv.AppendLine("CEP, Logradouro, Complemento, Bairro, Cidade, UF, Numero");
+
+
+            foreach (var e in enderecos)
+            {
+                csv.AppendLine($"{e.Cep},{e.Logradouro},{e.Complemento},{e.Bairro},{e.Cidade},{e.Uf},{e.Numero}");
+
+            }
+
+            var bytes = System.Text.Encoding.UTF8.GetBytes(csv.ToString());
+            return File(bytes, "text/csv", "enderecos.csv");
+
+        }
     }
+
 }

@@ -54,11 +54,34 @@
         <button type="submit" class="btn btn-primary">Criar</button>
         <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
 
-
-
-
-
         </form>
+
+    @section Scripts {
+        <script>
+                document.getElementById('Cep').addEventListener('blur', function () {
+                    var cep = this.value.replace(/\D/g, '');
+
+                    if (cep.length !== 8) return;
+
+                    fetch('/Endereco/BuscarCep?cep=' + cep)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.erro) {
+                                alert('CEP não encontrado!');
+                                return;
+                            }
+                            document.getElementById('Logradouro').value = data.logradouro || '';
+                            document.getElementById('Complemento').value = data.complemento || '';
+                            document.getElementById('Bairro').value = data.bairro || '';
+                            document.getElementById('Cidade').value = data.cidade || '';
+                            document.getElementById('Uf').value = data.uf || '';
+                        })
+                        .catch(() => alert('Erro ao buscar CEP!'));
+                });
+        </script>
+    }
+
+
 
 
 

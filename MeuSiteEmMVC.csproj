@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Scripts\SQL\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
