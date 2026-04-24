@@ -221,3 +221,4 @@ A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\bin\Debug\net10.0\runtimes\win\lib\net6.0\
 A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\bin\Debug\net10.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\bin\Debug\net10.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\MeuSiteE.C9262BE6.Up2Date
+A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
