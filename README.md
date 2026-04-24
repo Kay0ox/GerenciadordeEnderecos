@@ -144,7 +144,7 @@ O banco de dados foi criado usando **Entity Framework Core Migrations**, que ger
 | Coluna      | Tipo          | Descrição                       |
 |-------------|---------------|---------------------------------|
 | Id          | INT (PK)      | Identificador único             |
-| Cep         | NVARCHAR(10)  | CEP do endereço                 |
+| Cep         | NVARCHAR(8)  | CEP do endereço                 |
 | Logradouro  | NVARCHAR(200) | Nome da rua/avenida             |
 | Complemento | NVARCHAR(100) | Complemento (opcional)          |
 | Bairro      | NVARCHAR(100) | Bairro                          |
