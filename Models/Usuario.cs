@@ -13,8 +13,8 @@ namespace MeuSiteEmMVC.Models
 
 
         [Required]
-        [Display(Name = "Usuario")]
-        public string Usuario { get; set; }
+        [Display(Name = "Usuário")]
+        public string Login { get; set; }
 
 
         [Required]
