@@ -28,8 +28,8 @@ namespace MeuSiteEmMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = _context.Usuarios.FirstOrDefault(u => u.Login == model.Login && u.Senha == model.Senha);
-                if (usuario != null)
+                var usuario = _context.Usuarios.FirstOrDefault(u => u.Login == model.Login);
+                if (usuario != null && BCrypt.Net.BCrypt.Verify(model.Senha, usuario.Senha))
                 {
                     var claims = new List<Claim>
                     {
@@ -81,7 +81,7 @@ public IActionResult Registro()
             {
                 Nome = model.Nome,
                 Login = model.Login,
-                Senha = model.Senha
+                Senha = BCrypt.Net.BCrypt.HashPassword(model.Senha) // ← senha criptografada!
             };
 
             _context.Usuarios.Add(usuario);
