@@ -96,3 +96,5 @@ A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\refint\MeuSiteEmMVC.dll
 A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\MeuSiteEmMVC.pdb
 A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\MeuSiteEmMVC.genruntimeconfig.cache
 A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\ref\MeuSiteEmMVC.dll
+A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\MeuSiteEmMVC.csproj.AssemblyReference.cache
+A:\Projetos\MeuSiteEmMVC\MeuSiteEmMVC\obj\Debug\net10.0\MeuSiteEmMVC.sourcelink.json
