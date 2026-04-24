@@ -1,31 +1,176 @@
-html {
-  font-size: 14px;
+/* TEMAS */
+[data-theme="dark"] {
+    --bg: #0f0f0f;
+    --bg-card: #1a1a2e;
+    --bg-input: #16213e;
+    --text: #e0e0e0;
+    --text-muted: #888;
+    --border: #2a2a4a;
+    --navbar-bg: #0d0d1a;
+    --shadow: rgba(139, 92, 246, 0.15);
+    --purple: #8b5cf6;
+    --purple-dark: #6d28d9;
+    --purple-gradient: linear-gradient(135deg, #6d28d9, #8b5cf6);
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+[data-theme="light"] {
+    --bg: #f3f0ff;
+    --bg-card: #ffffff;
+    --bg-input: #f8f5ff;
+    --text: #1a1a2e;
+    --text-muted: #555;
+    --border: #d8b4fe;
+    --navbar-bg: #1a0533;
+    --shadow: rgba(109, 40, 217, 0.12);
+    --purple: #7c3aed;
+    --purple-dark: #5b21b6;
+    --purple-gradient: linear-gradient(135deg, #5b21b6, #7c3aed);
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+* {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* NAVBAR */
+.navbar {
+    background: var(--navbar-bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px var(--shadow);
+    padding: 1rem 0;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+}
+
+.nav-user {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* CARDS */
+.card-elegante {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px var(--shadow);
+    padding: 2rem;
+}
+
+/* TABELA */
+.table {
+    background-color: var(--bg-card);
+    color: var(--text);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px var(--shadow);
+}
+
+    .table thead tr {
+        background: var(--purple-gradient);
+        color: white;
+    }
+
+    .table tbody tr {
+        border-color: var(--border);
+    }
+
+        .table tbody tr:hover {
+            background-color: var(--bg-input);
+        }
+
+/* FORMULÁRIOS */
+.form-control, .form-label {
+    color: var(--text);
+}
+
+.form-control {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+}
+
+    .form-control:focus {
+        background-color: var(--bg-input);
+        border-color: var(--purple);
+        box-shadow: 0 0 0 3px var(--shadow);
+        color: var(--text);
+    }
+
+/* BOTÕES */
+.btn-primary {
+    background: var(--purple-gradient);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+    .btn-primary:hover {
+        background: var(--purple-dark);
+        border: none;
+    }
+
+.btn-success {
+    border-radius: 8px;
+}
+
+.btn-outline-light {
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+/* TÍTULOS */
+h2 {
+    font-weight: 700;
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* LOGIN */
+.login-wrapper {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 8px 40px var(--shadow);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }

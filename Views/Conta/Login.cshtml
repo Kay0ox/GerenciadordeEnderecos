@@ -1,10 +1,8 @@
 ﻿@model MeuSiteEmMVC.ViewModels.LoginViewModel
-<h3>Login</h3>
 
-
-<div class="row justify-content-center mt-5">
-    <div class="col-md-4">
-        <h2 class="mb-4">Login</h2>
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-title">Entrar</div>
 
         <form asp-action="Login" method="post">
             <div asp-validation-summary="All" class="text-danger mb-3"></div>
@@ -21,7 +19,8 @@
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            <button type="submit" class="btn btn-primary w-100 mt-2">Entrar</button>
+            <a asp-action="Registro" class="btn btn-outline-secondary w-100 mt-2">Criar conta</a>
         </form>
     </div>
 </div>
