@@ -34,6 +34,18 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[A:/Projetos/MeuSiteEmMVC/MeuSiteEmMVC/Views/Endereco/Criar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cQ3JpYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/Projetos/MeuSiteEmMVC/MeuSiteEmMVC/Views/Endereco/Deletar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cRGVsZXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/Projetos/MeuSiteEmMVC/MeuSiteEmMVC/Views/Endereco/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [A:/Projetos/MeuSiteEmMVC/MeuSiteEmMVC/Views/Endereco/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

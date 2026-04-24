@@ -1,63 +1,47 @@
-﻿@model HomeModel
-@{
-    ViewData["Title"] = "pagina de endereços";
-}
+﻿@model IEnumerable<MeuSiteEmMVC.Models.Endereco>
 
-<div class="text-center">
-    
-
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button">Adicionar novo Contato</a>
-    </div>
-
-
-
-
-
-    <h1 class="display4">Listagem de Endereços </h1>
-
-    <div class="container mt-4">
-        <h3>Lista de Endereços</h3>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">CEP</th>
-                        <th scope="col">Endereço</th>
-                        <th scope="col">Número</th>
-                        <th scope="col">Cidade/UF</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01001-000</td>
-                        <td>Praça da Sé</td>
-                        <td>S/N</td>
-                        <td>São Paulo/SP</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a role-"button" class="btn btn-primary">editar</a>
-                                <a role-"button" class="btn btn-danger">apagar</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>20040-002</td>
-                        <td>Rua Primeiro de Março</td>
-                        <td>100</td>
-                        <td>Rio de Janeiro/RJ</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a role-"button" class="btn btn-primary">editar</a>
-                                <a role-"button" class="btn btn-danger">apagar</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Endereços</h2>
+        <a asp-action="Criar" class="btn btn-primary">Adicionar Endereço</a>
         </div>
+
+        <table class="table table-striped">
+   
+            <thead>
+                <tr>
+                    <th>CEP</th>
+                <th>Logradouro</th>
+                <th>Numero</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>UF</th>
+                <th>Ações</th>       
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var endereco in Model)
+                {
+                    <tr>
+                        <td>@endereco.Cep</td>
+                        <td>@endereco.Logradouro</td>
+                        <td>@endereco.Numero</td>
+                        <td>@endereco.Bairro</td>
+                        <td>@endereco.Cidade</td>
+                        <td>@endereco.Uf</td>
+                        <td>
+                            <a asp-action="Editar" asp-route-id="@endereco.Id" class="btn btn-sm btn-warning">Editar</a>
+                            <a asp-action="Deletar" asp-route-id="@endereco.Id" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+            }
+
+            </tbody>
+
+        </table>
+
+
     </div>
 
-
-</div>
+  

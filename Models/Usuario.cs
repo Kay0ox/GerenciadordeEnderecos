@@ -4,24 +4,9 @@ namespace MeuSiteEmMVC.Models
 {
     public class Usuario
     {
-        public int ID { get; set; }
-
-
-        [Required]
-        [Display(Name = "Nome Completo")]
-        public string Nome { get; set; }
-
-
-        [Required]
-        [Display(Name = "Usuário")]
-        public string Login { get; set; }
-
-
-        [Required]
-        [Display(Name = "Senha")]
-        public string Senha { get; set; }
-
-
-
+        public int Id { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Login { get; set; } = string.Empty;
+        public string Senha { get; set; } = string.Empty;
     }
 }

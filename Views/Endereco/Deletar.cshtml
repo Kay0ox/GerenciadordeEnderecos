@@ -1,0 +1,27 @@
+﻿@model MeuSiteEmMVC.Models.Endereco
+
+
+<div class="container mt-4">
+    <h2>Excluir o Endereço</h2>
+
+    <p class="text-danger">CUIDADO! Você Tem certeza que deseja excluir este endereço?</p>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>CEP:</strong>@Model.Cep</p>
+            <p><strong>Logradouro:</strong>@Model.Logradouro</p>
+            <p><strong>Numero:</strong>@Model.Numero</p>
+            <p><strong>Bairro:</strong>@Model.Bairro</p>
+            <p><strong>Cidade:</strong>@Model.Cidade</p>
+            <p><strong>UF:</strong>@Model.Uf</p>
+        
+    </div>      
+
+</div>
+
+<form asp-action="Deletar" method="post">
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+</form> 
+
+</div>
